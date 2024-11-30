@@ -12,7 +12,7 @@
 >
 > 根据实验结果，容器化部署的gitlab-runner的**shell**执行器功能受限，具体表现为无法在gitlab-runner容器内使用docker运行时命令，所以采用**docker**执行器做为gitlab-runner的构建驱动。
 
-![image-20241129095303059](D:\vscodeProject\know-house\Typora\typora-user-images\image-20241129095303059.png)
+![image-20241129095303059](https://gitee.com/linwanlong/typora-images-bed/raw/master/typora-user-images/image-20241129095303059.png)
 
 ## 容器化部署gitlab-runner
 
@@ -203,7 +203,7 @@ upload:
 
 展示工作流运行时的容器：
 
-![image-20241129221209666](D:\vscodeProject\know-house\Typora\typora-user-images\image-20241129221209666.png)
+![image-20241129221209666](https://gitee.com/linwanlong/typora-images-bed/raw/master/typora-user-images/image-20241129221209666.png)
 
 runner-s9txxwglq-project-54-concurrent-1-db5155408a493253-build是工作容器（即**image**定义的镜像），负责执行管道中定义的命令。
 
@@ -221,11 +221,11 @@ runner-s9txxwglq-project-54-concurrent-1-db5155408a493253-docker-0是辅助容�
 
 runner-s9txxwglq-project-54-concurrent-1-db5155408a493253-build的启动命令：
 
-![image-20241129222715142](D:\vscodeProject\know-house\Typora\typora-user-images\image-20241129222715142.png)
+![image-20241129222715142](https://gitee.com/linwanlong/typora-images-bed/raw/master/typora-user-images/image-20241129222715142.png)
 
 runner-s9txxwglq-project-54-concurrent-1-db5155408a493253-docker-0的启动命令：
 
-![image-20241129222929018](D:\vscodeProject\know-house\Typora\typora-user-images\image-20241129222929018.png)
+![image-20241129222929018](https://gitee.com/linwanlong/typora-images-bed/raw/master/typora-user-images/image-20241129222929018.png)
 
 > [!WARNING]
 >
@@ -417,6 +417,6 @@ Service container logs:
 - docker:latest镜像构建：https://github.com/docker-library/docker/tree/9095b12e6b5eb72689fb2c15f76403ce35ce04f7/27
 
 
-  
 
-  
+
+
