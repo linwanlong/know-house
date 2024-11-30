@@ -304,7 +304,7 @@ fi
 
 展示.gitlab-ci.yml文件：
 
-```
+```yaml
 stages:
   - build
   - upload
@@ -351,7 +351,7 @@ docker引擎启动在--host=tcp://0.0.0.0:2376，docker客户端通过默认环�
 
 展示.gitlab-ci.yml文件：
 
-```
+```yaml
 stages:
   - build
   - upload
