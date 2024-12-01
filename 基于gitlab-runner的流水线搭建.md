@@ -6,7 +6,7 @@
 
 > [!NOTE]
 >
-> 为了保证宿主机环境不被管道工作污染，同时保证多台边端可以快速搭建自动构建环境，采用容器化方式部署gitlab-runner。
+> 为了保证宿主机环境不被管道工作污染，同时保证多台服务器可以快速搭建自动构建环境，采用容器化方式部署gitlab-runner。
 
 > [!WARNING]
 >
@@ -62,7 +62,7 @@ concurrent = 10
 log_level = "info"
 
 [[runners]]
-  name = "lced"
+  name = "lwl"
   url = "URL"
   token = "TOKEN"
   executor = "docker"
@@ -89,7 +89,7 @@ concurrent = 10
 log_level = "info"
 
 [[runners]]
-  name = "lced"
+  name = "lwl"
   url = "URL"
   token = "TOKEN"
   executor = "docker"
@@ -113,7 +113,7 @@ concurrent = 10
 log_level = "info"
   
 [[runners]]
-  name = "lced"
+  name = "lwl"
   url = "URL"
   token = "TOKEN"
   executor = "docker"
@@ -136,7 +136,7 @@ concurrent = 10
 log_level = "info"
   
 [[runners]]
-  name = "lced"
+  name = "lwl"
   url = "URL"
   token = "TOKEN"
   executor = "docker"
@@ -173,7 +173,7 @@ variables:
   HARBOR_USER: "HARBOR_USER"
   HARBOR_PASSWORD: "HARBOR_PASSWORD"
   HARBOR_HOST: "HARBOR_HOST"
-  HARBOR_IMAGE: "${HARBOR_HOST}/lced/${PROJECT_NAME}:${VERSION}-${VERSION_INDEX}-${ENVIRONMENT}-${ARCHITECTURE}"
+  HARBOR_IMAGE: "${HARBOR_HOST}/lwl/${PROJECT_NAME}:${VERSION}-${VERSION_INDEX}-${ENVIRONMENT}-${ARCHITECTURE}"
   DOCKER_TLS_CERTDIR: ""
 
 build:
@@ -186,7 +186,7 @@ build:
     - docker images
     - docker info
   tags:
-    - lced
+    - lwl
 
 upload:
   stage: upload
@@ -196,7 +196,7 @@ upload:
   script:
     - echo "rmi ${HARBOR_IMAGE}"
   tags:
-    - lced
+    - lwl
 
 
 ```
@@ -318,7 +318,7 @@ variables:
   HARBOR_USER: "HARBOR_USER"
   HARBOR_PASSWORD: "HARBOR_PASSWORD"
   HARBOR_HOST: "HARBOR_HOST"
-  HARBOR_IMAGE: "${HARBOR_HOST}/lced/${PROJECT_NAME}:${VERSION}-${VERSION_INDEX}-${ENVIRONMENT}-${ARCHITECTURE}"
+  HARBOR_IMAGE: "${HARBOR_HOST}/lwl/${PROJECT_NAME}:${VERSION}-${VERSION_INDEX}-${ENVIRONMENT}-${ARCHITECTURE}"
 
 build:
   stage: build
@@ -330,7 +330,7 @@ build:
     - docker images
     - docker info
   tags:
-    - lced
+    - lwl
 
 upload:
   stage: upload
@@ -340,7 +340,7 @@ upload:
   script:
     - echo "rmi ${HARBOR_IMAGE}"
   tags:
-    - lced
+    - lwl
 ```
 
 docker引擎启动在--host=tcp://0.0.0.0:2376，docker客户端通过默认环境变量**DOCKER_HOST=tcp://docker:2376**直接连接。
@@ -365,7 +365,7 @@ variables:
   HARBOR_USER: "HARBOR_USER"
   HARBOR_PASSWORD: "HARBOR_PASSWORD"
   HARBOR_HOST: "HARBOR_HOST"
-  HARBOR_IMAGE: "${HARBOR_HOST}/lced/${PROJECT_NAME}:${VERSION}-${VERSION_INDEX}-${ENVIRONMENT}-${ARCHITECTURE}"
+  HARBOR_IMAGE: "${HARBOR_HOST}/lwl/${PROJECT_NAME}:${VERSION}-${VERSION_INDEX}-${ENVIRONMENT}-${ARCHITECTURE}"
 
 build:
   stage: build
@@ -374,7 +374,7 @@ build:
     - docker images
     - docker info
   tags:
-    - lced
+    - lwl
 
 upload:
   stage: upload
@@ -382,7 +382,7 @@ upload:
   script:
     - echo "rmi ${HARBOR_IMAGE}"
   tags:
-    - lced
+    - lwl
 ```
 
 当使用**配置1**时，挂载宿主机的docker引擎，不需要再指定辅助容器（辅助容器生成docker.sock会冲突失败）。
